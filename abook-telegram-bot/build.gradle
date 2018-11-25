@@ -1,0 +1,53 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.6.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.github.vimcmd'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+    implementation 'com.github.vimcmd:abook-commons:0.0.1-SNAPSHOT' // needs source sets
+    
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testImplementation('org.springframework.security:spring-security-test')
+	compileOnly('org.projectlombok:lombok')
+    compile("org.springframework:spring-web")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    compile "org.telegram:telegrambots-spring-boot-starter:4.1"
+    compile "org.springframework.boot:spring-boot-starter-logging:$springBootVersion"
+
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir '../abook-commons/src/main/java'
+        }
+    }
+}

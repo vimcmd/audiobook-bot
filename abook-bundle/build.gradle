@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group = 'com.github.vimcmd'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+task runBundle {
+    group = 'app'
+    description = 'run audio book bot and server in bundle'
+    
+    dependsOn gradle.includedBuild('abook-server').task(':bootRun')
+	dependsOn gradle.includedBuild('abook-telegram-bot').task(':bootRun')
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+}

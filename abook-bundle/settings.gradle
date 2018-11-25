@@ -1,0 +1,5 @@
+rootProject.name = 'abook-bundle'
+
+includeBuild('../abook-telegram-bot')
+includeBuild('../abook-server')
+includeBuild('../abook-commons')
